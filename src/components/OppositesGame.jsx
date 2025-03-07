@@ -7,7 +7,7 @@ const OppositesGame = () => {
     { word: 'GROSS', opposite: 'KLEIN', type: 'adjective' },
     { word: 'HELL', opposite: 'DUNKEL', type: 'adjective' },
     { word: 'HOCH', opposite: 'TIEF', type: 'adjective' },
-    { word: 'WARM', opposite: 'KALT', type: 'adjective' },
+    { word: 'WARM', opposite: 'KALT', type: 'adjective', example: 'Im Sommer ist es WARM, aber im Winter ist es KALT.' },
     { word: 'SCHNELL', opposite: 'LANGSAM', type: 'adjective' },
     { word: 'ALT', opposite: 'NEU', type: 'adjective' },
     { word: 'VOLL', opposite: 'LEER', type: 'adjective' },
@@ -22,100 +22,100 @@ const OppositesGame = () => {
     
     // More adjectives
     { word: 'HEISS', opposite: 'KALT', type: 'adjective' },
-    { word: 'SCHÖN', opposite: 'HÄSSLICH', type: 'adjective' },
-    { word: 'GUT', opposite: 'SCHLECHT', type: 'adjective' },
+    { word: 'SCHÖN', opposite: 'HÄSSLICH', type: 'adjective', example: 'Es war ein SCHÖNER Tag, aber das Gewitter sah HÄSSLICH aus.' },
+    { word: 'GUT', opposite: 'SCHLECHT', type: 'adjective', example: 'Das Essen schmeckt GUT, aber der Kaffee schmeckt SCHLECHT.' },
     { word: 'REICH', opposite: 'ARM', type: 'adjective' },
-    { word: 'GLÜCKLICH', opposite: 'TRAURIG', type: 'adjective' },
-    { word: 'LANG', opposite: 'KURZ', type: 'adjective' },
+    { word: 'GLÜCKLICH', opposite: 'TRAURIG', type: 'adjective', example: 'Nach dem Gewinn war sie GLÜCKLICH, nach der Niederlage TRAURIG.' },
+    { word: 'LANG', opposite: 'KURZ', type: 'adjective', example: 'Im Sommer trägt man KURZE Hosen, im Winter LANGE Mäntel.' },
     { word: 'BREIT', opposite: 'SCHMAL', type: 'adjective' },
     { word: 'DICK', opposite: 'DÜNN', type: 'adjective' },
-    { word: 'JUNG', opposite: 'ALT', type: 'adjective' },
+    { word: 'JUNG', opposite: 'ALT', type: 'adjective', example: 'Meine Schwester ist noch JUNG, aber mein Großvater ist schon ALT.' },
     { word: 'WILD', opposite: 'ZAHM', type: 'adjective' },
-    { word: 'OFFEN', opposite: 'GESCHLOSSEN', type: 'adjective' },
+    { word: 'OFFEN', opposite: 'GESCHLOSSEN', type: 'adjective', example: 'Der Laden ist morgens OFFEN und abends GESCHLOSSEN.' },
     { word: 'KLUG', opposite: 'DUMM', type: 'adjective' },
     { word: 'HÄSSLICH', opposite: 'SCHÖN', type: 'adjective' },
-    { word: 'SAUBER', opposite: 'SCHMUTZIG', type: 'adjective' },
+    { word: 'SAUBER', opposite: 'SCHMUTZIG', type: 'adjective', example: 'Nach dem Putzen ist alles SAUBER, vor dem Putzen ist es SCHMUTZIG.' },
     { word: 'FLEISSIG', opposite: 'FAUL', type: 'adjective' },
     { word: 'FREUNDLICH', opposite: 'UNFREUNDLICH', type: 'adjective' },
     { word: 'HÖFLICH', opposite: 'UNHÖFLICH', type: 'adjective' },
-    { word: 'EINFACH', opposite: 'KOMPLIZIERT', type: 'adjective' },
-    { word: 'GESUND', opposite: 'KRANK', type: 'adjective' },
+    { word: 'EINFACH', opposite: 'KOMPLIZIERT', type: 'adjective', example: 'Mathematik kann EINFACH oder KOMPLIZIERT sein, je nach Aufgabe.' },
+    { word: 'GESUND', opposite: 'KRANK', type: 'adjective', example: 'Wer Sport treibt, bleibt GESUND. Wer zu viel arbeitet, wird manchmal KRANK.' },
     { word: 'GERADE', opposite: 'KRUMM', type: 'adjective' },
-    { word: 'RUHIG', opposite: 'LAUT', type: 'adjective' },
+    { word: 'RUHIG', opposite: 'LAUT', type: 'adjective', example: 'Die Bibliothek ist RUHIG, aber die Disco ist LAUT.' },
     { word: 'SÜSS', opposite: 'BITTER', type: 'adjective' },
     { word: 'FRISCH', opposite: 'ABGESTANDEN', type: 'adjective' },
     { word: 'MUTIG', opposite: 'ÄNGSTLICH', type: 'adjective' },
-    { word: 'WACH', opposite: 'MÜDE', type: 'adjective' },
+    { word: 'WACH', opposite: 'MÜDE', type: 'adjective', example: 'Morgens bin ich WACH, abends bin ich MÜDE.' },
     { word: 'SICHER', opposite: 'UNSICHER', type: 'adjective' },
-    { word: 'FREI', opposite: 'BESETZT', type: 'adjective' },
-    { word: 'BILLIG', opposite: 'TEUER', type: 'adjective' },
+    { word: 'FREI', opposite: 'BESETZT', type: 'adjective', example: 'Dieser Platz ist FREI, aber jener ist BESETZT.' },
+    { word: 'BILLIG', opposite: 'TEUER', type: 'adjective', example: 'Der Bleistift ist BILLIG, aber der Computer ist TEUER.' },
     { word: 'ORDENTLICH', opposite: 'UNORDENTLICH', type: 'adjective' },
     { word: 'VIEL', opposite: 'WENIG', type: 'adjective' },
     { word: 'TROCKEN', opposite: 'FEUCHT', type: 'adjective' },
-    { word: 'LINKS', opposite: 'RECHTS', type: 'adjective' },
-    { word: 'DUNKEL', opposite: 'HELL', type: 'adjective' },
+    { word: 'LINKS', opposite: 'RECHTS', type: 'adjective', example: 'Das Buch liegt LINKS, die Lampe steht RECHTS.' },
+    { word: 'DUNKEL', opposite: 'HELL', type: 'adjective', example: 'In der Nacht ist es DUNKEL, am Tag ist es HELL.' },
     { word: 'POSITIV', opposite: 'NEGATIV', type: 'adjective' },
-    { word: 'LEER', opposite: 'VOLL', type: 'adjective' },
+    { word: 'LEER', opposite: 'VOLL', type: 'adjective', example: 'Das Glas ist halb VOLL oder halb LEER?' },
     
     // Nouns
-    { word: 'TAG', opposite: 'NACHT', type: 'noun' },
-    { word: 'ANFANG', opposite: 'ENDE', type: 'noun' },
-    { word: 'SOMMER', opposite: 'WINTER', type: 'noun' },
+    { word: 'TAG', opposite: 'NACHT', type: 'noun', example: 'Am TAG arbeiten wir, in der NACHT schlafen wir.' },
+    { word: 'ANFANG', opposite: 'ENDE', type: 'noun', example: 'Am ANFANG des Buches ist die Einleitung, am ENDE steht das Fazit.' },
+    { word: 'SOMMER', opposite: 'WINTER', type: 'noun', example: 'Im SOMMER schwimmen wir, im WINTER fahren wir Ski.' },
     { word: 'LIEBE', opposite: 'HASS', type: 'noun' },
     { word: 'FREUND', opposite: 'FEIND', type: 'noun' },
-    { word: 'FRAGE', opposite: 'ANTWORT', type: 'noun' },
-    { word: 'EINGANG', opposite: 'AUSGANG', type: 'noun' },
+    { word: 'FRAGE', opposite: 'ANTWORT', type: 'noun', example: 'Auf jede FRAGE gibt es eine ANTWORT.' },
+    { word: 'EINGANG', opposite: 'AUSGANG', type: 'noun', example: 'Der EINGANG ist vorne, der AUSGANG hinten.' },
     { word: 'ERFOLG', opposite: 'MISSERFOLG', type: 'noun' },
     { word: 'WAHRHEIT', opposite: 'LÜGE', type: 'noun' },
     { word: 'STÄRKE', opposite: 'SCHWÄCHE', type: 'noun' },
-    { word: 'GEWINN', opposite: 'VERLUST', type: 'noun' },
+    { word: 'GEWINN', opposite: 'VERLUST', type: 'noun', example: 'Ein GEWINN macht froh, ein VERLUST macht traurig.' },
     { word: 'MÄNNCHEN', opposite: 'WEIBCHEN', type: 'noun' },
-    { word: 'OSTEN', opposite: 'WESTEN', type: 'noun' },
+    { word: 'OSTEN', opposite: 'WESTEN', type: 'noun', example: 'Die Sonne geht im OSTEN auf und im WESTEN unter.' },
     { word: 'NORDEN', opposite: 'SÜDEN', type: 'noun' },
     { word: 'KRIEG', opposite: 'FRIEDEN', type: 'noun' },
-    { word: 'ABFAHRT', opposite: 'ANKUNFT', type: 'noun' },
+    { word: 'ABFAHRT', opposite: 'ANKUNFT', type: 'noun', example: 'Die ABFAHRT ist um 8 Uhr, die ANKUNFT um 10 Uhr.' },
     { word: 'AUFSTIEG', opposite: 'ABSTIEG', type: 'noun' },
-    { word: 'LICHT', opposite: 'SCHATTEN', type: 'noun' },
+    { word: 'LICHT', opposite: 'SCHATTEN', type: 'noun', example: 'Wo LICHT ist, da ist auch SCHATTEN.' },
     { word: 'OPTIMIST', opposite: 'PESSIMIST', type: 'noun' },
-    { word: 'MORGEN', opposite: 'ABEND', type: 'noun' },
+    { word: 'MORGEN', opposite: 'ABEND', type: 'noun', example: 'Am MORGEN trinke ich Kaffee, am ABEND trinke ich Tee.' },
     { word: 'HITZE', opposite: 'KÄLTE', type: 'noun' },
     { word: 'FREUDE', opposite: 'TRAUER', type: 'noun' },
     { word: 'REICHTUM', opposite: 'ARMUT', type: 'noun' },
-    { word: 'MANN', opposite: 'FRAU', type: 'noun' },
+    { word: 'MANN', opposite: 'FRAU', type: 'noun', example: 'Der MANN trägt einen Anzug, die FRAU trägt ein Kleid.' },
     { word: 'IMPORT', opposite: 'EXPORT', type: 'noun' },
     { word: 'HEIMAT', opposite: 'FREMDE', type: 'noun' },
     { word: 'SIEG', opposite: 'NIEDERLAGE', type: 'noun' },
-    { word: 'ZUKUNFT', opposite: 'VERGANGENHEIT', type: 'noun' },
+    { word: 'ZUKUNFT', opposite: 'VERGANGENHEIT', type: 'noun', example: 'Aus der VERGANGENHEIT lernen wir für die ZUKUNFT.' },
     
     // Verbs
-    { word: 'KOMMEN', opposite: 'GEHEN', type: 'verb' },
-    { word: 'ÖFFNEN', opposite: 'SCHLIESSEN', type: 'verb' },
-    { word: 'KAUFEN', opposite: 'VERKAUFEN', type: 'verb' },
+    { word: 'KOMMEN', opposite: 'GEHEN', type: 'verb', example: 'Mein Freund KOMMT um 15 Uhr und GEHT um 18 Uhr.' },
+    { word: 'ÖFFNEN', opposite: 'SCHLIESSEN', type: 'verb', example: 'Morgens ÖFFNET das Geschäft, abends SCHLIESST es wieder.' },
+    { word: 'KAUFEN', opposite: 'VERKAUFEN', type: 'verb', example: 'Ich KAUFE ein Auto und er VERKAUFT sein Fahrrad.' },
     { word: 'LACHEN', opposite: 'WEINEN', type: 'verb' },
-    { word: 'GEBEN', opposite: 'NEHMEN', type: 'verb' },
-    { word: 'STEIGEN', opposite: 'FALLEN', type: 'verb' },
+    { word: 'GEBEN', opposite: 'NEHMEN', type: 'verb', example: 'Es ist besser zu GEBEN als zu NEHMEN.' },
+    { word: 'STEIGEN', opposite: 'FALLEN', type: 'verb', example: 'Die Preise STEIGEN im Winter und FALLEN im Sommer.' },
     { word: 'LIEBEN', opposite: 'HASSEN', type: 'verb' },
     { word: 'STARTEN', opposite: 'STOPPEN', type: 'verb' },
-    { word: 'GEWINNEN', opposite: 'VERLIEREN', type: 'verb' },
-    { word: 'VERGESSEN', opposite: 'ERINNERN', type: 'verb' },
+    { word: 'GEWINNEN', opposite: 'VERLIEREN', type: 'verb', example: 'Man kann nicht immer GEWINNEN, manchmal muss man auch VERLIEREN.' },
+    { word: 'VERGESSEN', opposite: 'ERINNERN', type: 'verb', example: 'Ich VERGESSE oft meine Schlüssel, aber ich ERINNERE mich an deinen Geburtstag.' },
     { word: 'ANFANGEN', opposite: 'AUFHÖREN', type: 'verb' },
     { word: 'BAUEN', opposite: 'ZERSTÖREN', type: 'verb' },
-    { word: 'EINSTEIGEN', opposite: 'AUSSTEIGEN', type: 'verb' },
-    { word: 'ARBEITEN', opposite: 'ENTSPANNEN', type: 'verb' },
+    { word: 'EINSTEIGEN', opposite: 'AUSSTEIGEN', type: 'verb', example: 'An der ersten Haltestelle STEIGE ich EIN, an der letzten STEIGE ich AUS.' },
+    { word: 'ARBEITEN', opposite: 'ENTSPANNEN', type: 'verb', example: 'Unter der Woche ARBEITE ich, am Wochenende ENTSPANNE ich mich.' },
     { word: 'ANZIEHEN', opposite: 'AUSZIEHEN', type: 'verb' },
-    { word: 'EINSCHALTEN', opposite: 'AUSSCHALTEN', type: 'verb' },
+    { word: 'EINSCHALTEN', opposite: 'AUSSCHALTEN', type: 'verb', example: 'Abends SCHALTE ich das Licht EIN, nachts SCHALTE ich es AUS.' },
     { word: 'BEGINNEN', opposite: 'ENDEN', type: 'verb' },
     { word: 'HEBEN', opposite: 'SENKEN', type: 'verb' },
-    { word: 'WACHEN', opposite: 'SCHLAFEN', type: 'verb' },
-    { word: 'VERSTECKEN', opposite: 'FINDEN', type: 'verb' },
+    { word: 'WACHEN', opposite: 'SCHLAFEN', type: 'verb', example: 'Tagsüber WACHEN wir, nachts SCHLAFEN wir.' },
+    { word: 'VERSTECKEN', opposite: 'FINDEN', type: 'verb', example: 'Die Kinder VERSTECKEN die Ostereier und die Eltern FINDEN sie.' },
     { word: 'HELFEN', opposite: 'BEHINDERN', type: 'verb' },
     { word: 'ANMELDEN', opposite: 'ABMELDEN', type: 'verb' },
-    { word: 'EINATMEN', opposite: 'AUSATMEN', type: 'verb' },
+    { word: 'EINATMEN', opposite: 'AUSATMEN', type: 'verb', example: 'Beim Yoga tief EINATMEN und langsam AUSATMEN.' },
     { word: 'BESCHLEUNIGEN', opposite: 'BREMSEN', type: 'verb' },
-    { word: 'SPAREN', opposite: 'AUSGEBEN', type: 'verb' },
+    { word: 'SPAREN', opposite: 'AUSGEBEN', type: 'verb', example: 'Im Winter SPAREN wir Geld, im Sommer GEBEN wir es AUS.' },
     { word: 'HINZUFÜGEN', opposite: 'ENTFERNEN', type: 'verb' },
     { word: 'TEILEN', opposite: 'SAMMELN', type: 'verb' },
-    { word: 'ERLAUBEN', opposite: 'VERBIETEN', type: 'verb' },
+    { word: 'ERLAUBEN', opposite: 'VERBIETEN', type: 'verb', example: 'Eltern ERLAUBEN manches und VERBIETEN anderes.' },
     { word: 'VERBINDEN', opposite: 'TRENNEN', type: 'verb' }
   ];
   
@@ -146,6 +146,8 @@ const OppositesGame = () => {
   const [round, setRound] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   const [usedWords, setUsedWords] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [showNextButton, setShowNextButton] = useState(false);
   
   // Select a new word
   const selectNewWord = () => {
@@ -166,6 +168,8 @@ const OppositesGame = () => {
     setOptions(generateOptions(selectedPair.opposite, selectedPair.type));
     setUsedWords([...usedWords, selectedPair.word]);
     setFeedback('');
+    setSelectedOption(null);
+    setShowNextButton(false);
   };
   
   // Initialize game
@@ -174,23 +178,31 @@ const OppositesGame = () => {
   }, []);
   
   // Check answer
-  const checkAnswer = (selectedOption) => {
-    if (selectedOption === currentPair.opposite) {
+  const checkAnswer = (option) => {
+    setSelectedOption(option);
+    
+    if (option === currentPair.opposite) {
       setFeedback('Richtig! 😊');
       setScore(score + 1);
     } else {
-      setFeedback(`Falsch. Der Gegensatz von ${currentPair.word} ist ${currentPair.opposite}.`);
+      // Find example sentence if it exists
+      const example = currentPair.example ? 
+        `\n\nBeispiel: ${currentPair.example}` : '';
+      
+      setFeedback(`Der Gegensatz von ${currentPair.word} ist ${currentPair.opposite}.${example}`);
     }
     
-    // Delay, then next word
-    setTimeout(() => {
-      if (round < 10) {
-        setRound(round + 1);
-        selectNewWord();
-      } else {
-        setGameOver(true);
-      }
-    }, 1500);
+    setShowNextButton(true);
+  };
+  
+  // Go to next word
+  const goToNextWord = () => {
+    if (round < 10) {
+      setRound(round + 1);
+      selectNewWord();
+    } else {
+      setGameOver(true);
+    }
   };
   
   // Restart game
@@ -230,7 +242,11 @@ const OppositesGame = () => {
                 <button
                   key={index}
                   onClick={() => checkAnswer(option)}
-                  className="py-3 px-6 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium"
+                  disabled={selectedOption !== null}
+                  className={`py-3 px-6 text-white rounded-md font-medium 
+                    ${selectedOption === null ? 'bg-blue-600 hover:bg-blue-700' : 
+                      option === currentPair?.opposite ? 'bg-green-600' : 
+                      selectedOption === option ? 'bg-amber-500' : 'bg-gray-400'}`}
                 >
                   {option}
                 </button>
@@ -239,9 +255,20 @@ const OppositesGame = () => {
           </div>
           
           {feedback && (
-            <p className={`mt-4 text-lg font-medium ${feedback.includes('Richtig') ? 'text-green-600' : 'text-red-600'}`}>
-              {feedback}
-            </p>
+            <div className={`mt-4 p-4 rounded-lg ${feedback.includes('Richtig') ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
+              <p className="text-lg font-medium whitespace-pre-line">
+                {feedback}
+              </p>
+              
+              {showNextButton && (
+                <button
+                  onClick={goToNextWord}
+                  className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium"
+                >
+                  Weiter
+                </button>
+              )}
+            </div>
           )}
         </>
       ) : (
