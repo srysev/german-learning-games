@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react';
 const MissingLettersGame = () => {
   // Wörterliste nach Kategorien
   const wordCategories = {
-    TIERE: ['HUND', 'KATZE', 'MAUS', 'VOGEL', 'FISCH', 'PFERD', 'TIGER', 'ZEBRA', 'HASE', 'IGEL'],
-    FARBEN: ['BLAU', 'GRÜN', 'GELB', 'ROT', 'WEISS', 'BRAUN', 'LILA', 'PINK', 'GRAU', 'ORANGE'],
-    ESSEN: ['APFEL', 'BROT', 'MILCH', 'KÄSE', 'PIZZA', 'NUDEL', 'WURST', 'SUPPE', 'OBST', 'SALAT'],
-    NATUR: ['BAUM', 'BERG', 'FLUSS', 'WALD', 'SONNE', 'WOLKE', 'REGEN', 'STERN', 'BLUME', 'GRAS'],
-    REISEN: ['ZELT', 'HOTEL', 'STRAND', 'KOFFER', 'KARTE', 'PASS', 'FLUG', 'BAHN', 'MEER', 'INSEL'],
-    HOBBYS: ['SPORT', 'MUSIK', 'LESEN', 'MALEN', 'GARTEN', 'TANZEN', 'KOCHEN', 'FILM', 'KUNST', 'SPIEL']
+    TIERE: ['HUND', 'KATZE', 'MAUS', 'VOGEL', 'FISCH', 'PFERD', 'TIGER', 'ZEBRA', 'HASE', 'IGEL', 'LÖWE', 'BIENE', 'ENTE', 'SCHAF', 'ZIEGE'],
+    FARBEN: ['BLAU', 'GRÜN', 'GELB', 'ROT', 'WEISS', 'BRAUN', 'LILA', 'PINK', 'GRAU', 'ORANGE', 'GOLD', 'BEIGE'],
+    ESSEN: ['APFEL', 'BROT', 'MILCH', 'KÄSE', 'PIZZA', 'NUDEL', 'WURST', 'SUPPE', 'OBST', 'SALAT', 'REIS', 'EI', 'TORTE', 'WEIN', 'SAFT'],
+    NATUR: ['BAUM', 'BERG', 'FLUSS', 'WALD', 'SONNE', 'WOLKE', 'REGEN', 'STERN', 'BLUME', 'GRAS', 'SAND', 'MEER', 'WIND', 'SCHNEE', 'BLITZ'],
+    REISEN: ['ZELT', 'HOTEL', 'STRAND', 'KOFFER', 'KARTE', 'PASS', 'FLUG', 'BAHN', 'MEER', 'INSEL', 'BUS', 'AUTO', 'TAXI', 'BOOT', 'STADT'],
+    HOBBYS: ['SPORT', 'MUSIK', 'LESEN', 'MALEN', 'GARTEN', 'TANZEN', 'KOCHEN', 'FILM', 'KUNST', 'SPIEL', 'YOGA', 'REITEN', 'GOLF'],
+    KLEIDUNG: ['HOSE', 'HEMD', 'ROCK', 'KLEID', 'SCHAL', 'JACKE', 'SOCKE', 'SCHUH', 'MANTEL', 'HEFT', 'GÜRTEL', 'MÜTZE'],
+    MÖBEL: ['TISCH', 'STUHL', 'BETT', 'SOFA', 'REGAL', 'LAMPE', 'SCHRANK', 'SPIEGEL', 'SESSEL', 'KISSEN'],
+    KÖRPER: ['KOPF', 'HAND', 'FUSS', 'BEIN', 'ARM', 'AUGE', 'NASE', 'MUND', 'OHR', 'HAAR', 'ZAHN', 'HERZ'],
+    WETTER: ['SONNE', 'REGEN', 'WIND', 'STURM', 'SCHNEE', 'FROST', 'NEBEL', 'WARM', 'KALT', 'WOLKE']
   };
   
   // State-Variablen
@@ -23,13 +27,36 @@ const MissingLettersGame = () => {
   const [round, setRound] = useState(1);
   const [answered, setAnswered] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  
-  // Zufälliges Wort aus einer Kategorie wählen
+  const [isWrongAnswer, setIsWrongAnswer] = useState(false);
+  const [usedWords, setUsedWords] = useState(new Set());
+  const [debug, setDebug] = useState(false); // Entwicklungsmodus
+
+  // Zufälliges Wort aus einer Kategorie wählen - überarbeitete Version
   const selectRandomWord = () => {
     const categories = Object.keys(wordCategories);
-    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-    const words = wordCategories[randomCategory];
-    const randomWord = words[Math.floor(Math.random() * words.length)];
+    let randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    let availableWords = wordCategories[randomCategory].filter(word => !usedWords.has(word));
+
+    // Wenn alle Wörter in dieser Kategorie verwendet wurden, wähle eine andere Kategorie
+    if (availableWords.length === 0) {
+      const availableCategories = categories.filter(cat => 
+        wordCategories[cat].some(word => !usedWords.has(word))
+      );
+      
+      // Wenn alle Wörter verwendet wurden, setze usedWords zurück
+      if (availableCategories.length === 0) {
+        setUsedWords(new Set());
+        availableWords = wordCategories[randomCategory];
+      } else {
+        randomCategory = availableCategories[Math.floor(Math.random() * availableCategories.length)];
+        availableWords = wordCategories[randomCategory].filter(word => !usedWords.has(word));
+      }
+    }
+
+    const randomWord = availableWords[Math.floor(Math.random() * availableWords.length)];
+    
+    // Aktualisiere die verwendeten Wörter
+    setUsedWords(prev => new Set([...prev, randomWord]));
     
     setCurrentCategory(randomCategory);
     setCurrentWord(randomWord);
@@ -65,6 +92,7 @@ const MissingLettersGame = () => {
       setScore(score + 1);
     } else {
       setFeedback(`Falsch. Der richtige Buchstabe ist ${missingLetter}`);
+      setIsWrongAnswer(true);
     }
     
     setAnswered(true);
@@ -74,9 +102,11 @@ const MissingLettersGame = () => {
   const goToNextRound = () => {
     if (round < 10) {
       setRound(round + 1);
+      setIsWrongAnswer(false);
       selectRandomWord();
     } else {
       setGameOver(true);
+      setUsedWords(new Set()); // Reset verwendete Wörter am Ende eines Spiels
     }
   };
   
@@ -90,6 +120,7 @@ const MissingLettersGame = () => {
     setScore(0);
     setRound(1);
     setGameOver(false);
+    setUsedWords(new Set()); // Reset verwendete Wörter
     selectRandomWord();
   };
   
@@ -109,7 +140,34 @@ const MissingLettersGame = () => {
       checkAnswer();
     }
   };
-  
+
+  useEffect(() => {
+    // Fokus auf das Eingabefeld setzen
+    const inputField = document.getElementById('letterInput');
+    if (inputField && !answered) {
+      inputField.focus();
+    }
+  }, [currentWord, answered]); // Wird ausgeführt, wenn sich das Wort ändert oder eine Antwort gegeben wurde
+
+  // Debug-Komponente (nur im Entwicklungsmodus)
+  const DebugInfo = () => debug ? (
+    <div className="fixed bottom-4 right-4 bg-gray-800 text-white p-4 rounded-lg opacity-75">
+      <h3>Debug Info:</h3>
+      <p>Verwendete Wörter in diesem Spiel: {usedWords.size}</p>
+      <p>Aktuelle Kategorie: {currentCategory}</p>
+      <p>Noch verfügbare Wörter in {currentCategory}: {
+        wordCategories[currentCategory]?.filter(word => !usedWords.has(word)).length
+      }</p>
+      <p>Runde: {round}/10</p>
+      <button 
+        onClick={() => console.log('Verwendete Wörter:', [...usedWords])}
+        className="bg-blue-500 px-2 py-1 rounded mt-2"
+      >
+        Log Used Words
+      </button>
+    </div>
+  ) : null;
+
   return (
     <div className="flex flex-col items-center justify-center p-6 mx-auto max-w-lg rounded-lg bg-white shadow-md">
       <h1 className="text-2xl font-bold mb-6 text-center">Fehlende Buchstaben Spiel</h1>
@@ -147,7 +205,7 @@ const MissingLettersGame = () => {
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
                 maxLength="1"
-                disabled={answered}
+                disabled={answered || isWrongAnswer}
                 className="w-16 h-16 text-center text-2xl font-bold border-2 border-blue-500 rounded-md"
                 autoFocus
               />
@@ -193,6 +251,7 @@ const MissingLettersGame = () => {
           </button>
         </div>
       )}
+      <DebugInfo />
     </div>
   );
 };
