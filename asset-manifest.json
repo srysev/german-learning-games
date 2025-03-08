@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/german-learning-games/static/css/main.c7d64910.css",
-    "main.js": "/german-learning-games/static/js/main.fbef381d.js",
+    "main.css": "/german-learning-games/static/css/main.4f5af2a6.css",
+    "main.js": "/german-learning-games/static/js/main.b67bac5c.js",
     "static/js/453.adacd196.chunk.js": "/german-learning-games/static/js/453.adacd196.chunk.js",
     "index.html": "/german-learning-games/index.html",
-    "main.c7d64910.css.map": "/german-learning-games/static/css/main.c7d64910.css.map",
-    "main.fbef381d.js.map": "/german-learning-games/static/js/main.fbef381d.js.map",
+    "main.4f5af2a6.css.map": "/german-learning-games/static/css/main.4f5af2a6.css.map",
+    "main.b67bac5c.js.map": "/german-learning-games/static/js/main.b67bac5c.js.map",
     "453.adacd196.chunk.js.map": "/german-learning-games/static/js/453.adacd196.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c7d64910.css",
-    "static/js/main.fbef381d.js"
+    "static/css/main.4f5af2a6.css",
+    "static/js/main.b67bac5c.js"
   ]
 }
