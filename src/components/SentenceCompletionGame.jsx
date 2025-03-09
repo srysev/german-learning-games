@@ -14,7 +14,7 @@ const shuffleArray = (array) => {
 const allSentences = [
   // Thema: Geografie + Kategorie: Nomen
   { 
-    sentence: "Der ___ ist der höchste Berg Deutschlands.", 
+    sentence: "Die ___ ist der höchste Berg Deutschlands.", 
     options: ["Zugspitze", "Rhein", "Bodensee"], 
     answer: "Zugspitze",
     topic: "Geografie",
@@ -41,7 +41,7 @@ const allSentences = [
   },
   { 
     sentence: "Die Erde ___ sich einmal pro Tag um ihre Achse.", 
-    options: ["dreht", "bewegt", "schiebt"], 
+    options: ["dreht", "schwebt", "schiebt"], 
     answer: "dreht",
     topic: "Geografie",
     wordType: "Verb",
@@ -76,7 +76,7 @@ const allSentences = [
     explanation: "Die DNA (Desoxyribonukleinsäure) enthält die genetischen Informationen."
   },
   { 
-    sentence: "Das ___ ist das Zentrum unseres Sonnensystems.", 
+    sentence: "Die ___ ist das Zentrum unseres Sonnensystems.", 
     options: ["Sonne", "Mond", "Stern"], 
     answer: "Sonne",
     topic: "Wissenschaft",
@@ -149,11 +149,11 @@ const allSentences = [
   },
   { 
     sentence: "Komponisten ___ Musikstücke.", 
-    options: ["schreiben", "lesen", "verkaufen"], 
-    answer: "schreiben",
+    options: ["komponieren", "reparieren", "kochen"], 
+    answer: "komponieren",
     topic: "Musik",
     wordType: "Verb",
-    explanation: "Komponisten schreiben oder komponieren Musikstücke."
+    explanation: "Komponisten komponieren Musikstücke, das heißt, sie erschaffen und notieren neue musikalische Werke."
   },
   
   // Thema: Sport + Kategorie: Adjektive
@@ -184,12 +184,12 @@ const allSentences = [
     explanation: "Die Olympischen Spiele werden in verschiedenen Gastgeberländern ausgetragen."
   },
   { 
-    sentence: "Der Fußballspieler schoss den Ball ___ das Tor.", 
-    options: ["in", "auf", "unter"], 
+    sentence: "Der Fußballspieler erzielte ein Tor, indem er den Ball ___ das Netz schoss.", 
+    options: ["in", "neben", "über"], 
     answer: "in",
     topic: "Sport",
     wordType: "Präposition",
-    explanation: "Beim Fußball muss der Ball in das Tor geschossen werden, um zu punkten."
+    explanation: "Wenn ein Tor erzielt wird, geht der Ball in das Netz oder Tor."
   },
   
   // Thema: Naturwissenschaften + Kategorie: Nomen
@@ -226,6 +226,266 @@ const allSentences = [
     topic: "Naturwissenschaften",
     wordType: "Verb",
     explanation: "Durch Photosynthese produzieren Pflanzen Sauerstoff."
+  },
+  // 30 zusätzliche einfachere und alltagsnahe Sätze für das SentenceCompletionGame
+  // Alltagssituationen
+  { 
+    sentence: "Zum Zähneputzen braucht man eine ___.", 
+    options: ["Zahnbürste", "Gabel", "Schere"], 
+    answer: "Zahnbürste",
+    topic: "Alltag",
+    wordType: "Nomen",
+    explanation: "Man benutzt eine Zahnbürste, um die Zähne zu putzen."
+  },
+  { 
+    sentence: "Morgens ___ viele Menschen Kaffee.", 
+    options: ["trinken", "essen", "lesen"], 
+    answer: "trinken",
+    topic: "Alltag",
+    wordType: "Verb",
+    explanation: "Kaffee ist ein Getränk, das viele Menschen morgens trinken."
+  },
+  { 
+    sentence: "In der Nacht ist es normalerweise ___.", 
+    options: ["dunkel", "hell", "laut"], 
+    answer: "dunkel",
+    topic: "Alltag",
+    wordType: "Adjektiv",
+    explanation: "Wenn die Sonne weg ist, wird es dunkel in der Nacht."
+  },
+  
+  // Essen und Trinken
+  { 
+    sentence: "Brot kann man beim ___ kaufen.", 
+    options: ["Bäcker", "Metzger", "Friseur"], 
+    answer: "Bäcker",
+    topic: "Essen",
+    wordType: "Nomen",
+    explanation: "Ein Bäcker stellt Brot und andere Backwaren her und verkauft sie."
+  },
+  { 
+    sentence: "Äpfel wachsen an einem ___.", 
+    options: ["Baum", "Strauch", "Boden"], 
+    answer: "Baum",
+    topic: "Essen",
+    wordType: "Nomen",
+    explanation: "Äpfel sind Früchte, die an Apfelbäumen wachsen."
+  },
+  { 
+    sentence: "Suppe isst man mit einem ___.", 
+    options: ["Löffel", "Messer", "Glas"], 
+    answer: "Löffel",
+    topic: "Essen",
+    wordType: "Nomen",
+    explanation: "Ein Löffel ist das passende Besteck zum Essen von Suppe."
+  },
+  
+  // Freizeit und Hobbys
+  { 
+    sentence: "Im Kino kann man ___ anschauen.", 
+    options: ["Filme", "Bücher", "Fische"], 
+    answer: "Filme",
+    topic: "Freizeit",
+    wordType: "Nomen",
+    explanation: "Kinos sind Orte, wo Filme auf großen Leinwänden gezeigt werden."
+  },
+  { 
+    sentence: "Mit einem Ball kann man ___ spielen.", 
+    options: ["Fußball", "Schach", "Karten"], 
+    answer: "Fußball",
+    topic: "Freizeit",
+    wordType: "Nomen",
+    explanation: "Fußball ist ein beliebtes Ballspiel, das mit den Füßen gespielt wird."
+  },
+  { 
+    sentence: "Zum Schwimmen geht man ins ___.", 
+    options: ["Schwimmbad", "Theater", "Restaurant"], 
+    answer: "Schwimmbad",
+    topic: "Freizeit",
+    wordType: "Nomen",
+    explanation: "Ein Schwimmbad ist ein Ort mit Becken voller Wasser zum Schwimmen."
+  },
+  
+  // Familie und soziale Beziehungen
+  { 
+    sentence: "Die Tochter meiner Schwester ist meine ___.", 
+    options: ["Nichte", "Cousine", "Tante"], 
+    answer: "Nichte",
+    topic: "Familie",
+    wordType: "Nomen",
+    explanation: "Die Kinder der eigenen Geschwister nennt man Neffe (Junge) oder Nichte (Mädchen)."
+  },
+  { 
+    sentence: "Meine Mutter und mein Vater sind meine ___.", 
+    options: ["Eltern", "Geschwister", "Großeltern"], 
+    answer: "Eltern",
+    topic: "Familie",
+    wordType: "Nomen",
+    explanation: "Vater und Mutter zusammen werden als Eltern bezeichnet."
+  },
+  { 
+    sentence: "Freunde ___ oft gemeinsam Zeit.", 
+    options: ["verbringen", "verkaufen", "vergessen"], 
+    answer: "verbringen",
+    topic: "Beziehungen",
+    wordType: "Verb",
+    explanation: "Freunde verbringen gerne Zeit miteinander, um ihre Freundschaft zu pflegen."
+  },
+  
+  // Wohnen und Haushalt
+  { 
+    sentence: "In einem Bett kann man ___.", 
+    options: ["schlafen", "kochen", "duschen"], 
+    answer: "schlafen",
+    topic: "Wohnen",
+    wordType: "Verb",
+    explanation: "Ein Bett ist ein Möbelstück zum Schlafen."
+  },
+  { 
+    sentence: "Zum Kochen braucht man einen ___.", 
+    options: ["Herd", "Teppich", "Spiegel"], 
+    answer: "Herd",
+    topic: "Haushalt",
+    wordType: "Nomen",
+    explanation: "Auf einem Herd werden Töpfe und Pfannen erhitzt, um Speisen zu kochen."
+  },
+  { 
+    sentence: "Die Wäsche wird in der ___ gewaschen.", 
+    options: ["Waschmaschine", "Spülmaschine", "Mikrowelle"], 
+    answer: "Waschmaschine",
+    topic: "Haushalt",
+    wordType: "Nomen",
+    explanation: "Eine Waschmaschine ist ein Gerät zum Reinigen von Kleidung und anderen Textilien."
+  },
+  
+  // Einkaufen
+  { 
+    sentence: "Im Supermarkt kann man ___ kaufen.", 
+    options: ["Lebensmittel", "Autos", "Häuser"], 
+    answer: "Lebensmittel",
+    topic: "Einkaufen",
+    wordType: "Nomen",
+    explanation: "Supermärkte verkaufen hauptsächlich Lebensmittel und andere Dinge des täglichen Bedarfs."
+  },
+  { 
+    sentence: "An der Kasse muss man ___.", 
+    options: ["bezahlen", "schlafen", "tanzen"], 
+    answer: "bezahlen",
+    topic: "Einkaufen",
+    wordType: "Verb",
+    explanation: "An der Kasse bezahlt man für die Waren, die man kaufen möchte."
+  },
+  { 
+    sentence: "Die Preise in diesem Geschäft sind sehr ___.", 
+    options: ["günstig", "schwer", "langsam"], 
+    answer: "günstig",
+    topic: "Einkaufen",
+    wordType: "Adjektiv",
+    explanation: "Wenn etwas günstig ist, kostet es wenig Geld."
+  },
+  
+  // Transportmittel und Reisen
+  { 
+    sentence: "Mit dem ___ kann man über den Himmel fliegen.", 
+    options: ["Flugzeug", "Auto", "Fahrrad"], 
+    answer: "Flugzeug",
+    topic: "Transport",
+    wordType: "Nomen",
+    explanation: "Flugzeuge sind Luftfahrzeuge, die durch die Luft fliegen können."
+  },
+  { 
+    sentence: "Für eine lange Reise packt man einen ___.", 
+    options: ["Koffer", "Teller", "Hammer"], 
+    answer: "Koffer",
+    topic: "Reisen",
+    wordType: "Nomen",
+    explanation: "In einem Koffer transportiert man Kleidung und andere Dinge auf Reisen."
+  },
+  { 
+    sentence: "Im Auto muss man sich mit dem ___ anschnallen.", 
+    options: ["Gurt", "Lenkrad", "Radio"], 
+    answer: "Gurt",
+    topic: "Transport",
+    wordType: "Nomen",
+    explanation: "Der Sicherheitsgurt schützt die Insassen bei einem Unfall."
+  },
+  
+  // Wetter und Jahreszeiten
+  { 
+    sentence: "Im Winter fällt oft ___.", 
+    options: ["Schnee", "Sand", "Obst"], 
+    answer: "Schnee",
+    topic: "Wetter",
+    wordType: "Nomen",
+    explanation: "Schnee ist gefrorener Niederschlag, der typischerweise im Winter fällt."
+  },
+  { 
+    sentence: "Bei ___ benutzt man einen Regenschirm.", 
+    options: ["Regen", "Sonne", "Wind"], 
+    answer: "Regen",
+    topic: "Wetter",
+    wordType: "Nomen",
+    explanation: "Ein Regenschirm schützt vor dem Nasswerden bei Regen."
+  },
+  { 
+    sentence: "Im Sommer ist es oft sehr ___.", 
+    options: ["heiß", "kalt", "dunkel"], 
+    answer: "heiß",
+    topic: "Wetter",
+    wordType: "Adjektiv",
+    explanation: "Der Sommer ist die wärmste Jahreszeit mit oft heißen Temperaturen."
+  },
+  
+  // Tiere und Natur
+  { 
+    sentence: "Eine ___ gibt Milch.", 
+    options: ["Kuh", "Katze", "Ente"], 
+    answer: "Kuh",
+    topic: "Tiere",
+    wordType: "Nomen",
+    explanation: "Kühe sind Nutztiere, die Milch geben, die wir trinken können."
+  },
+  { 
+    sentence: "Ein Vogel hat ___ zum Fliegen.", 
+    options: ["Flügel", "Hufe", "Kiemen"], 
+    answer: "Flügel",
+    topic: "Tiere",
+    wordType: "Nomen",
+    explanation: "Vögel haben Flügel, mit denen sie fliegen können."
+  },
+  { 
+    sentence: "Fische ___ im Wasser.", 
+    options: ["schwimmen", "gehen", "fliegen"], 
+    answer: "schwimmen",
+    topic: "Tiere",
+    wordType: "Verb",
+    explanation: "Fische leben im Wasser und bewegen sich durch Schwimmen fort."
+  },
+  
+  // Schule und Bildung
+  { 
+    sentence: "In der Schule lernen Kinder ___.", 
+    options: ["lesen", "schlafen", "gehen"], 
+    answer: "lesen",
+    topic: "Bildung",
+    wordType: "Verb",
+    explanation: "Lesen ist eine grundlegende Fähigkeit, die Kindern in der Schule beigebracht wird."
+  },
+  { 
+    sentence: "Mit einem ___ kann man schreiben.", 
+    options: ["Stift", "Teller", "Schuh"], 
+    answer: "Stift",
+    topic: "Bildung",
+    wordType: "Nomen",
+    explanation: "Ein Stift ist ein Werkzeug zum Schreiben oder Zeichnen auf Papier."
+  },
+  { 
+    sentence: "Die Lehrerin erklärt den Schülern die ___.", 
+    options: ["Aufgabe", "Suppe", "Tür"], 
+    answer: "Aufgabe",
+    topic: "Bildung",
+    wordType: "Nomen",
+    explanation: "In der Schule erklären Lehrer den Schülern verschiedene Aufgaben, die sie lösen sollen."
   }
 ];
 
