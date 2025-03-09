@@ -370,7 +370,7 @@ const SentenceCompletionGame = () => {
                 <React.Fragment key={index}>
                   {part}
                   {index < array.length - 1 && (
-                    <span className="inline-block px-1 py-0.5 mx-1 bg-red-100 border-2 border-red-500 rounded">___</span>
+                    <span className="inline-block px-1 py-0.5 mx-1 bg-gray-200 border-2 border-gray-400 rounded">___</span>
                   )}
                 </React.Fragment>
               ))}
