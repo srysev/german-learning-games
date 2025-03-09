@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import OppositesGame from './components/OppositesGame';
 import MissingLettersGame from './components/MissingLettersGame';
+import SentenceCompletionGame from './components/SentenceCompletionGame';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             
             {activeGame === 'opposites' && <OppositesGame />}
             {activeGame === 'missing-letters' && <MissingLettersGame />}
+            {activeGame === 'sentence-completion' && <SentenceCompletionGame />}
           </div>
         ) : (
           <div className="flex flex-col md:flex-row justify-center gap-6">
@@ -38,6 +40,12 @@ function App() {
               title="Fehlende Buchstaben"
               description="Finde den fehlenden Buchstaben in jedem Wort."
               onClick={() => setActiveGame('missing-letters')}
+            />
+
+            <GameCard 
+              title="Lückentext-Spiel"
+              description="Vervollständige Sätze mit den richtigen Wörtern."
+              onClick={() => setActiveGame('sentence-completion')}
             />
           </div>
         )}
