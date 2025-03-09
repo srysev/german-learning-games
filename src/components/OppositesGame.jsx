@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { saveGameStats, getGameStats } from '../services/gameStorage';
 
 const OppositesGame = () => {
   // Words and their opposites
@@ -148,6 +149,10 @@ const OppositesGame = () => {
   const [usedWords, setUsedWords] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showNextButton, setShowNextButton] = useState(false);
+  const [gameNumber, setGameNumber] = useState(1);
+  const [allGamesScore, setAllGamesScore] = useState([]);
+  const [mistakes, setMistakes] = useState([]);
+  const [showProgress, setShowProgress] = useState(false);
   
   // Select a new word
   const selectNewWord = () => {
@@ -185,11 +190,18 @@ const OppositesGame = () => {
       setFeedback('Richtig! 😊');
       setScore(score + 1);
     } else {
-      // Find example sentence if it exists
       const example = currentPair.example ? 
         `\n\nBeispiel: ${currentPair.example}` : '';
       
       setFeedback(`Der Gegensatz von ${currentPair.word} ist ${currentPair.opposite}.${example}`);
+      
+      // Fehler speichern
+      setMistakes([...mistakes, {
+        word: currentPair.word,
+        correct: currentPair.opposite,
+        wrong: option,
+        example: currentPair.example
+      }]);
     }
     
     setShowNextButton(true);
@@ -201,7 +213,24 @@ const OppositesGame = () => {
       setRound(round + 1);
       selectNewWord();
     } else {
-      setGameOver(true);
+      // Runde beenden und Statistik speichern
+      const gameStats = {
+        gameNumber,
+        score,
+        mistakes,
+        date: new Date().toISOString()
+      };
+      
+      setAllGamesScore([...allGamesScore, gameStats]);
+      
+      if (gameNumber < 3) {
+        // Zeige Zwischenstand
+        setShowProgress(true);
+      } else {
+        // Alle drei Spiele beendet
+        saveGameStats(gameStats);
+        setGameOver(true);
+      }
     }
   };
   
@@ -209,25 +238,124 @@ const OppositesGame = () => {
   const restartGame = () => {
     setScore(0);
     setRound(1);
+    setGameNumber(1);
     setGameOver(false);
     setUsedWords([]);
+    setMistakes([]);
+    setAllGamesScore([]);
     selectNewWord();
   };
   
+  // Modifiziere die GameOverView Komponente
+  const GameOverView = () => {
+    // Sammle alle Fehler aus allen Spielen
+    const allMistakes = allGamesScore.reduce((acc, game) => [...acc, ...game.mistakes], []);
+    
+    return (
+      <div className="text-center mb-6">
+        <h2 className="text-xl mb-4">Alle Spiele beendet!</h2>
+        
+        <div className="space-y-4 mb-6">
+          {allGamesScore.map((game, index) => (
+            <div key={index} className="p-4 bg-blue-50 rounded-lg">
+              <h3 className="font-bold">Spiel {game.gameNumber}</h3>
+              <p>Punkte: {game.score} von 10</p>
+            </div>
+          ))}
+          
+          <div className="p-4 bg-green-50 rounded-lg">
+            <p className="font-bold">Durchschnitt: {
+              (allGamesScore.reduce((sum, game) => sum + game.score, 0) / allGamesScore.length).toFixed(1)
+            } Punkte</p>
+          </div>
+        </div>
+
+        {allMistakes.length > 0 && (
+          <div className="mt-6 text-left">
+            <h3 className="font-bold mb-3">Alle Fehler zum Nachlernen:</h3>
+            <div className="space-y-3">
+              {allMistakes.map((mistake, index) => (
+                <div key={index} className="p-3 bg-amber-50 rounded-lg">
+                  <p><strong>{mistake.word}</strong> ≠ {mistake.correct}</p>
+                  {mistake.example && (
+                    <p className="text-sm mt-1 text-gray-600">{mistake.example}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <button
+          onClick={restartGame}
+          className="mt-6 px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium"
+        >
+          Neue Spielreihe starten
+        </button>
+      </div>
+    );
+  };
+
+  const GameProgressView = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+        <h2 className="text-xl font-bold mb-4">Spiel {gameNumber} beendet!</h2>
+        
+        <div className="mb-6">
+          <p className="text-lg">Punkte: <span className="font-bold">{score} von 10</span></p>
+          {mistakes.length > 0 && (
+            <div className="mt-4">
+              <p className="font-bold mb-2">Worte zum Nachlernen in diesem Spiel:</p>
+              <div className="space-y-2">
+                {mistakes.map((mistake, index) => (
+                  <div key={index} className="p-2 bg-amber-50 rounded">
+                    <p><strong>{mistake.word}</strong> ≠ {mistake.correct}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <button
+          onClick={() => {
+            setShowProgress(false);
+            setGameNumber(gameNumber + 1);
+            setScore(0);
+            setRound(1);
+            setUsedWords([]);
+            setMistakes([]);
+            selectNewWord();
+          }}
+          className="w-full px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium"
+        >
+          Weiter zu Spiel {gameNumber + 1}
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <div className="flex flex-col items-center justify-center p-6 mx-auto max-w-lg rounded-lg bg-white shadow-md">
-      <h1 className="text-2xl font-bold mb-6 text-center">Gegensätze Spiel</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Gegensätze Spiel</h1>
       
-      <div className="w-full p-4 mb-6 bg-blue-50 rounded-lg">
-        <p className="text-lg mb-2">Runde: <span className="font-bold">{round}/10</span></p>
-        <p className="text-lg">Punkte: <span className="font-bold">{score}</span></p>
-        {currentPair && (
-          <p className="text-sm text-gray-600 mt-1">Wortart: <span className="italic">
-            {currentPair.type === 'adjective' ? 'Adjektiv' : 
-             currentPair.type === 'noun' ? 'Nomen' : 'Verb'}
-          </span></p>
-        )}
-      </div>
+      {!gameOver && (
+        <div className="w-full px-4 py-2 mb-4 bg-blue-50 rounded-lg flex items-center justify-between text-sm">
+          <div className="flex gap-3">
+            <span>Spiel: <strong>{gameNumber}/3</strong></span>
+            <span>·</span>
+            <span>Runde: <strong>{round}/10</strong></span>
+            <span>·</span>
+            <span>Punkte: <strong>{score}</strong></span>
+          </div>
+          {currentPair && (
+            <span className="text-gray-600">
+              {currentPair.type === 'adjective' ? 'Adjektiv' : 
+               currentPair.type === 'noun' ? 'Nomen' : 'Verb'}
+            </span>
+          )}
+        </div>
+      )}
       
       {!gameOver ? (
         <>
@@ -272,18 +400,9 @@ const OppositesGame = () => {
           )}
         </>
       ) : (
-        <div className="text-center mb-6">
-          <p className="text-xl mb-4">Spiel beendet!</p>
-          <p className="text-lg mb-6">Du hast <span className="font-bold">{score}</span> von <span className="font-bold">10</span> Punkten erreicht.</p>
-          
-          <button
-            onClick={restartGame}
-            className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium"
-          >
-            Neues Spiel
-          </button>
-        </div>
+        <GameOverView />
       )}
+      {showProgress && <GameProgressView />}
     </div>
   );
 };
