@@ -165,7 +165,7 @@ const allSentences = [
   },
   {
     sentence: "Komponisten ___ Musikstücke.",
-    options: ["schreiben", "lesen", "verkaufen"],
+    options: ["schreiben", "essen", "schieben"],
     answer: "schreiben",
     topic: "Musik",
     wordType: "Verb",
@@ -267,6 +267,7 @@ const SentenceCompletionGame = () => {
   const [showNextButton, setShowNextButton] = useState(false);
   const [mistakes, setMistakes] = useState([]);
   const [showGameOver, setShowGameOver] = useState(false);
+  const [shuffledOptions, setShuffledOptions] = useState([]);
 
   // Spiel initialisieren
   useEffect(() => {
@@ -275,6 +276,7 @@ const SentenceCompletionGame = () => {
     setGameSentences(selectedSentences);
     setCurrentSentenceIndex(0);
     setCurrentSentence(selectedSentences[0]);
+    setShuffledOptions(shuffleArray(selectedSentences[0].options));
   }, []);
 
   // Einen neuen Satz auswählen
@@ -286,6 +288,7 @@ const SentenceCompletionGame = () => {
     }
     setCurrentSentenceIndex(nextIndex);
     setCurrentSentence(gameSentences[nextIndex]);
+    setShuffledOptions(shuffleArray(gameSentences[nextIndex].options));
     setFeedback('');
     setSelectedOption(null);
     setShowNextButton(false);
@@ -329,6 +332,7 @@ const SentenceCompletionGame = () => {
     setGameSentences(selectedSentences);
     setCurrentSentenceIndex(0);
     setCurrentSentence(selectedSentences[0]);
+    setShuffledOptions(shuffleArray(selectedSentences[0].options)); // Add this line
     setScore(0);
     setRound(1);
     setGameOver(false);
@@ -411,7 +415,7 @@ const SentenceCompletionGame = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-3 w-full max-w-xs mx-auto">
-              {currentSentence?.options.map((option, index) => (
+              {shuffledOptions.map((option, index) => (
                 <button
                   key={index}
                   onClick={() => checkAnswer(option)}
